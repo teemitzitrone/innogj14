@@ -15,22 +15,48 @@ const ActorSpritesheet2DComponent = preload("res://scripts/actor/components/acto
 const ActorUpdateSpritesheetComponent = preload("res://scripts/actor/components/actor_update_spritesheet_component.gd")
 
 
+static func create_kitty() -> Actor:
+  var actor = Actor.new()
+
+  var input_component = ActorInputMoveComponent.new()
+  actor.add_logic_component(input_component)
+
+  var physics_component = ActorPhysicsMoveAndCollideComponent.new()
+  physics_component.feet_collider = Rect2(16, 2, 32, 4)
+  physics_component.collision_layer.append(1)
+  physics_component.collision_mask.append(1)
+  actor.add_physics_component(physics_component)
+
+  var update_spritesheet_component = ActorUpdateSpritesheetComponent.new()
+  actor.add_graphics_component(update_spritesheet_component)
+
+  var spritesheet_component = _create_character_animation_sprite(
+    "res://assets/gfx/pc/kitty.png",
+    {}
+  )
+
+  actor.add_graphics_component(spritesheet_component)
+
+  return actor
+
+
+
 
 static func _create_character_animation_sprite(tex: String, replacement_colors := {}) -> ActorSpritesheet2DComponent:
   var anim_sprite = ActorSpritesheet2DComponent.new()
   anim_sprite.texture = tex
-  anim_sprite.frame_size = Vector2i(3, 4)
+  anim_sprite.frame_size = Vector2i(3, 5)
   anim_sprite.frame_time_distance = 0.2
-  anim_sprite.region_rect = Rect2(Vector2.ZERO, Vector2(96, 256))
+  anim_sprite.region_rect = Rect2(Vector2.ZERO, Vector2(48, 80))
   anim_sprite.animations = {
-    "idle_down": [1],
-    "idle_up": [4],
-    "idle_right": [7],
-    "idle_left": [10],
+    "idle_down": [13, 12, 14, 12],
+    "idle_up": [13, 12, 14, 12],
+    "idle_right": [13, 12, 14, 12],
+    "idle_left": [13, 12, 14, 12],
     "run_down": [1, 0, 1, 2],
     "run_up": [4, 3, 4, 5],
-    "run_right": [7, 6, 7, 8],
-    "run_left": [10, 9, 10, 11],
+    "run_right": [10, 9, 10, 11],
+    "run_left": [7, 6, 7, 8],
   }
   anim_sprite.animation_nodes = {
     "idle": ["idle_down", "idle_left", "idle_right", "idle_up"],
