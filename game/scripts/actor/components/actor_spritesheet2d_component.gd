@@ -79,8 +79,8 @@ func _init_sprite() -> void:
   _sprite.region_rect = region_rect
   _sprite.hframes = frame_size.x
   _sprite.vframes = frame_size.y
-  _sprite.position.y = -20
-  _sprite.centered = false
+  _sprite.position.y = 0
+  _sprite.centered = true
 
   _sprite.y_sort_enabled = true
 

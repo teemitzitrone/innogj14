@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://d32dfy6xnhgnw"]
+
+[ext_resource type="Shader" path="res://assets/shader/light.gdshader" id="1_4e3x8"]
+[ext_resource type="Script" path="res://scenes/objects/light/light.gd" id="1_7vorm"]
+[ext_resource type="Texture2D" uid="uid://deseewwh3s0yb" path="res://assets/gfx/light_area.png" id="2_1udal"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75brv"]
+shader = ExtResource("1_4e3x8")
+
+[node name="Light" type="Node2D"]
+script = ExtResource("1_7vorm")
+
+[node name="LightArea" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_75brv")
+texture = ExtResource("2_1udal")
+region_enabled = true
+region_rect = Rect2(0, 0, 320, 180)
