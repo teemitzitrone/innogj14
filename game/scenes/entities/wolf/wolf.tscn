@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8agftv3goioa"]
+
+[ext_resource type="Texture2D" uid="uid://o8abt7sbklhy" path="res://icon.svg" id="1_lrtyk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mkumf"]
+radius = 26.0
+height = 76.0
+
+[node name="wolf" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.467, 0.5)
+texture = ExtResource("1_lrtyk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mkumf")

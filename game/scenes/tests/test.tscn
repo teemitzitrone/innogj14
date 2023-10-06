@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://btj5n5m4st36m"]
+[gd_scene load_steps=3 format=3 uid="uid://btj5n5m4st36m"]
 
 [ext_resource type="PackedScene" uid="uid://ct11b2b62m1x3" path="res://scenes/entities/player/player.tscn" id="1_y46vr"]
+[ext_resource type="PackedScene" uid="uid://dp8gmlmfxtvwb" path="res://scenes/objects/crystal/crystal.tscn" id="2_nqhwo"]
 
 [node name="Game" type="Node2D"]
 
+[node name="crystal" parent="." instance=ExtResource("2_nqhwo")]
+position = Vector2(296, 131)
+
 [node name="Player" parent="." instance=ExtResource("1_y46vr")]
-position = Vector2(117, 85)
+position = Vector2(56, 75)
