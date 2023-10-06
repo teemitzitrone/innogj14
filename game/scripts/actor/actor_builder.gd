@@ -22,7 +22,7 @@ static func create_kitty() -> Actor:
   actor.add_logic_component(input_component)
 
   var physics_component = ActorPhysicsMoveAndCollideComponent.new()
-  physics_component.feet_collider = Rect2(16, 2, 32, 4)
+  physics_component.feet_collider = Rect2(8, -6, 16, 4)
   physics_component.collision_layer.append(1)
   physics_component.collision_mask.append(1)
   actor.add_physics_component(physics_component)
@@ -36,6 +36,49 @@ static func create_kitty() -> Actor:
   )
 
   actor.add_graphics_component(spritesheet_component)
+
+  return actor
+
+
+static func create_wolf() -> Actor:
+  var actor = Actor.new()
+
+  var physics_component = ActorPhysicsMoveAndCollideComponent.new()
+  physics_component.feet_collider = Rect2(16, 2, 32, 4)
+  physics_component.collision_layer.append(1)
+  physics_component.collision_mask.append(1)
+  actor.add_physics_component(physics_component)
+
+  var update_spritesheet_component = ActorUpdateSpritesheetComponent.new()
+  actor.add_graphics_component(update_spritesheet_component)
+
+  var anim_sprite = ActorSpritesheet2DComponent.new()
+  anim_sprite.texture = "res://assets/gfx/npc/Wulf.png"
+  anim_sprite.frame_size = Vector2i(3, 8)
+  anim_sprite.frame_time_distance = 0.2
+  anim_sprite.region_rect = Rect2(Vector2.ZERO, Vector2(48, 128))
+  anim_sprite.animations = {
+    "idle_down": [18],
+    "idle_up": [12],
+    "idle_right": [6],
+    "idle_left": [1],
+    "run_down": [19, 18, 19, 20],
+    "run_up": [13, 12, 13, 14],
+    "run_right": [7, 6, 7, 8],
+    "run_left": [1, 0, 1, 2],
+    "run_dark_down": [22, 21, 22, 23],
+    "run_dark_up": [16, 15, 16, 17],
+    "run_dark_right": [10, 9, 10, 11],
+    "run_dark_left": [4, 3, 4, 5],
+  }
+  anim_sprite.animation_nodes = {
+    "idle": ["idle_down", "idle_left", "idle_right", "idle_up"],
+    "run": ["run_down", "run_left", "run_right", "run_up"],
+    "run_dark": ["run_dark_down", "run_dark_left", "run_dark_right", "run_dark_up"],
+  }
+  anim_sprite.animation_transitions = {"idle": ["run", "run_dark"], "run": ["idle", "run_dark"], "run_dark": ["idle", "run"]}
+  anim_sprite.animation_default = "run"
+  actor.add_graphics_component(anim_sprite)
 
   return actor
 
