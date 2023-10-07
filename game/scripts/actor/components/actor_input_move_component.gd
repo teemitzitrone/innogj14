@@ -22,10 +22,13 @@ func input(event) -> void:
 
 
 func _get_direction() -> Vector2:
-  if target != actor.position:
+  var dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+  if dir == Vector2.ZERO and target != actor.position:
     smooth_out()
     return actor.position.direction_to(target)
-  return Input.get_vector("move_left", "move_right", "move_up", "move_down")
+
+  target = actor.position
+  return dir
 
 
 func _normalize_diagonal_direction(direction: Vector2) -> Vector2:
