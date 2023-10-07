@@ -13,5 +13,6 @@ script = ExtResource("1_7vorm")
 [node name="LightArea" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_75brv")
 texture = ExtResource("2_1udal")
+flip_v = true
 region_enabled = true
 region_rect = Rect2(0, 0, 320, 180)

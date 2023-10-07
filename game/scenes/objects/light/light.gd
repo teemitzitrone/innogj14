@@ -57,7 +57,7 @@ func _translate_vector_to_direction(v: Vector2) -> Direction:
       return Direction.RIGHT
     Vector2(-1, 0):
       return Direction.LEFT
-    Vector2(0, 0), Vector2(0, 1), _:
+    _:
       if v.x > 0 and v.y < 0:
         return Direction.UP_RIGHT
       elif v.x > 0 and v.y > 0:
