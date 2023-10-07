@@ -13,6 +13,7 @@ const ActorInputMoveComponent = preload("res://scripts/actor/components/actor_in
 const ActorPhysicsMoveAndCollideComponent = preload("res://scripts/actor/components/actor_physics_moveandcollide_component.gd")
 const ActorSpritesheet2DComponent = preload("res://scripts/actor/components/actor_spritesheet2d_component.gd")
 const ActorUpdateSpritesheetComponent = preload("res://scripts/actor/components/actor_update_spritesheet_component.gd")
+const ActorLightConeComponent = preload("res://scripts/actor/components/actor_light_cone_colider.gd")
 
 const WulfBuilder = preload("res://scripts/actor/wulf/wulf_builder.gd")
 const KittyLightComponent = preload("res://scripts/actor/components/kitty_light_component.gd")
@@ -29,6 +30,12 @@ static func create_kitty() -> Actor:
   physics_component.collision_layer.append(1)
   physics_component.collision_mask.append(1)
   actor.add_physics_component(physics_component)
+  
+  var physics_light_cone_component = ActorLightConeComponent.new()
+  #physics_component.feet_collider = Rect2(0, 4, 16, 4)
+  physics_component.collision_layer.append(2)
+  physics_component.collision_mask.append(2)
+  actor.add_physics_component(physics_light_cone_component)
 
   var update_spritesheet_component = ActorUpdateSpritesheetComponent.new()
   actor.add_graphics_component(update_spritesheet_component)

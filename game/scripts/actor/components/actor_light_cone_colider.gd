@@ -1,6 +1,7 @@
 extends "res://scripts/actor/actor_component.gd"
 
-var cone_collider := Rect2()
+var length = 32
+var width = 16
 
 ## list of layers the body shall be in
 var collision_layer : Array[int] = []
@@ -15,10 +16,9 @@ func _ready():
   actor.add_child(_body)
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-  pass
+#func _process(delta):
+#  pass
 
 func _build_kinematic_body() -> CharacterBody2D:
   var body = CharacterBody2D.new()
@@ -33,17 +33,15 @@ func _build_kinematic_body() -> CharacterBody2D:
 func _build_collision_shape() -> CollisionShape2D:
   var collision_shape = CollisionShape2D.new()
 #  var rect_shape = RectangleShape2D.new()
-  var shape = CapsuleShape2D.new()
-
-  shape.height = cone_collider.size.x
-  shape.radius = cone_collider.size.y
-#  shape.transform.rotation = 90
-#  shape.rotation = 90
+  var shape = ConvexPolygonShape2D.new()
+  shape.set_point_cloud(PackedVector2Array(
+    [Vector2(0, 0),
+     Vector2(length, width/2),
+     Vector2(0, -width),
+     Vector2(-length, width/2)]
+    ))
 
   collision_shape.shape = shape
-  collision_shape.position = cone_collider.position
-  collision_shape.rotation_degrees = 90
-
   return collision_shape
 
 
