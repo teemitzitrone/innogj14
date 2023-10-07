@@ -26,7 +26,7 @@ static func create_kitty() -> Actor:
   actor.add_logic_component(input_component)
 
   var physics_component = ActorPhysicsMoveAndCollideComponent.new()
-  physics_component.feet_collider = Rect2(0, 4, 16, 8)
+  physics_component.feet_collider = Rect2(0, 4, 6, 6)
   physics_component.collision_layer.append(1)
   physics_component.collision_mask.append(1)
   physics_component.groups_data = ["kitty"]
