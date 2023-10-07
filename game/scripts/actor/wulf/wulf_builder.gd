@@ -2,7 +2,7 @@ extends RefCounted
 
 const Actor = preload("res://scripts/actor/actor.gd")
 const ActorPhysicsMoveAndCollideComponent = preload("res://scripts/actor/components/actor_physics_moveandcollide_component.gd")
-const ActorUpdateSpritesheetComponent = preload("res://scripts/actor/components/actor_update_spritesheet_component.gd")
+const ActorUpdateSpritesheetComponent = preload("res://scripts/actor/components/wolf_sprite_update_component.gd")
 const ActorSpritesheet2DComponent = preload("res://scripts/actor/components/actor_spritesheet2d_component.gd")
 
 static func getImageIdex(sprite: int, animation: int, direction: int) -> int:

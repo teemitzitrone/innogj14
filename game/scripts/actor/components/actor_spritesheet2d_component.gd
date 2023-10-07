@@ -68,6 +68,15 @@ func _on_actor_component_message_send(message_type, info) -> void:
     if current_animation_node != info:
       _state_machine.travel(info)
 
+  elif message_type == "show_on_top":
+    if info:
+      _sprite.y_sort_enabled = true
+      _sprite.z_index = 30
+      _sprite.z_as_relative = false
+    else:
+      _sprite.z_index = 0
+      _sprite.z_as_relative = true
+
 
 func _init_sprite() -> void:
   assert(!texture.is_empty())

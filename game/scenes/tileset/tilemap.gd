@@ -20,7 +20,7 @@ func _unhandled_input(_event):
         var action_map_position = local_to_map(player.global_position)
         _break_nearest_crystal(action_map_position)
 
-func _break_nearest_crystal(position: Vector2):
+func _break_nearest_crystal(pos: Vector2):
     var neighbours = [
         Vector2.UP,
         Vector2.UP + Vector2.LEFT,
@@ -33,7 +33,7 @@ func _break_nearest_crystal(position: Vector2):
     ]
 
     for neighbour in neighbours:
-        var position_to_check = position + neighbour
+        var position_to_check = pos + neighbour
         var tile_data : TileData = get_cell_tile_data(object_layer, position_to_check)
         if tile_data && tile_data.get_custom_data(is_breakable):
             set_cell(object_layer, position_to_check, -1)
