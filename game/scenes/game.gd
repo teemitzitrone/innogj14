@@ -8,6 +8,7 @@ func _ready():
   var camera = Camera2D.new()
   kitty.add_child(camera)
   camera.make_current()
+#  camera.zoom = Vector2(0.4, 0.4)
 
   var wolf = G.ActorBuilder.create_wolf()
   wolf.position = Vector2(60, 60)

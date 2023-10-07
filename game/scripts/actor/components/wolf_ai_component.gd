@@ -25,7 +25,7 @@ func ready():
 
 func process(_delta):
   var centerPoint = G.get_viewport().get_camera_2d().get_screen_center_position()
-#  print_debug(actor.global_position.distance_to(centerPoint))
+
   if current_state == AiState.BUNNY_RUN_AWAY:
     if actor.global_position.distance_to(centerPoint) < INTERACTION_RADIUS:
       actor.direction = runaway_direction
@@ -35,10 +35,6 @@ func process(_delta):
       actor.velocity = Vector2.ZERO
       actor.component_message_send.emit("ai_state_changed", 0)
     return
-    # get opposite direction
-    # run into opposite direction for x px
-    #
-#    return
 
 
   var direction = Vector2.ZERO

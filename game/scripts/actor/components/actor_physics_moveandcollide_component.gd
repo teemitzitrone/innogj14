@@ -48,8 +48,11 @@ func physics_process(_delta: float) -> void:
   if is_wolf:
     for i in _body.get_slide_collision_count():
       var collision = _body.get_slide_collision(i)
+#      print_debug(collision.get_collider().name)
       if collision.get_collider().name == "LightCone":
         actor.component_message_send.emit("collision", "wolf:lightcone")
+      elif collision.get_collider().is_in_group("kitty"):
+        G.kill_kitty.emit()
 
 
   if _body.position != Vector2.ZERO:
