@@ -38,6 +38,7 @@ func _break_nearest_crystal(position: Vector2):
         if tile_data && tile_data.get_custom_data(is_breakable):
             set_cell(object_layer, position_to_check, -1)
             set_cell(effects_layer, position_to_check, -1)
+            G.crystal_broken.emit()
             break
 
 func _on_child_entered_tree(node: Node):
