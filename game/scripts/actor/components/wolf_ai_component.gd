@@ -1,17 +1,15 @@
 extends "res://scripts/actor/actor_component.gd"
 
 enum AiState {
-  IDLE,
-  RUN_TOWARDS_PLAYER,
+  NORMAL,
   BUNNY_RUN_AWAY,
-  ATTACK_PLAYER,
 }
 
 
 const INTERACTION_RADIUS: float = 60.0 # Radius in which player has to be, to be followed
 
 
-var current_state: AiState = AiState.IDLE
+var current_state: AiState = AiState.NORMAL
 
 
 
@@ -20,6 +18,9 @@ func ready():
 
 
 func process(_delta):
+  if current_state == AiState.BUNNY_RUN_AWAY:
+    return
+
   var centerPoint = G.get_viewport().get_camera_2d().get_screen_center_position()
   var direction = Vector2.ZERO
 

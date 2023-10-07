@@ -25,7 +25,9 @@ static func create_wolf() -> Actor:
   var physics_component = ActorPhysicsMoveAndCollideComponent.new()
   physics_component.feet_collider = Rect2(0, 2, 8, 4)
   physics_component.collision_layer.append(1)
+  physics_component.collision_layer.append(2)
   physics_component.collision_mask.append(1)
+  physics_component.collision_mask.append(2)
   actor.add_physics_component(physics_component)
 
   var update_spritesheet_component = ActorUpdateSpritesheetComponent.new()

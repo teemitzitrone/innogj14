@@ -11,11 +11,13 @@ var collision_mask : Array[int] = []
 
 var _body : CharacterBody2D = null
 
+
 func ready() -> void:
   _body = _build_kinematic_body()
   actor.add_child(_body)
   actor.direction_changed.connect(onDirectionChange)
   actor.velocity_changed.connect(onDirectionChange)
+
 
 func _build_kinematic_body() -> CharacterBody2D:
   var body = CharacterBody2D.new()
@@ -26,6 +28,7 @@ func _build_kinematic_body() -> CharacterBody2D:
   body.collision_mask = _get_bits_combined(collision_mask)
 
   return body
+
 
 func _build_collision_shape() -> CollisionPolygon2D:
   var vectorPack = PackedVector2Array(
@@ -45,10 +48,12 @@ func _get_bits_combined(list: Array[int]) -> int:
 
   return bits
 
+
 func onDirectionChange() -> void:
   _body.set_global_rotation_degrees(_direction_to_degrees(actor.direction))
   if actor.velocity == Vector2.ZERO:
     _body.set_global_rotation_degrees(_direction_to_degrees(Vector2.DOWN))
+
 
 func _direction_to_degrees(v: Vector2) -> int:
   match v:
