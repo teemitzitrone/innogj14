@@ -11,14 +11,9 @@ var collision_mask : Array[int] = []
 
 var _body : CharacterBody2D = null
 
-func _ready():
+func ready() -> void:
   _body = _build_kinematic_body()
   actor.add_child(_body)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#  pass
 
 func _build_kinematic_body() -> CharacterBody2D:
   var body = CharacterBody2D.new()
@@ -30,7 +25,7 @@ func _build_kinematic_body() -> CharacterBody2D:
 
   return body
   
-func _build_collision_shape() -> CollisionShape2D:
+func _build_collision_shape() -> CollisionPolygon2D:
   var vectorPack = PackedVector2Array(
     [Vector2(0, 0),
      Vector2(width/2.0, length),
