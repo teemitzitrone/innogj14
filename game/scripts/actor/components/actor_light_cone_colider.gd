@@ -15,6 +15,7 @@ func ready() -> void:
   _body = _build_kinematic_body()
   actor.add_child(_body)
   actor.direction_changed.connect(onDirectionChange)
+  actor.velocity_changed.connect(onDirectionChange)
 
 func _build_kinematic_body() -> CharacterBody2D:
   var body = CharacterBody2D.new()
@@ -43,10 +44,12 @@ func _get_bits_combined(list: Array[int]) -> int:
     bits += int(pow(entry, 2))
 
   return bits
-  
+
 func onDirectionChange() -> void:
   _body.set_global_rotation_degrees(_direction_to_degrees(actor.direction))
-   
+  if actor.velocity == Vector2.ZERO:
+    _body.set_global_rotation_degrees(_direction_to_degrees(Vector2.DOWN))
+
 func _direction_to_degrees(v: Vector2) -> int:
   match v:
     Vector2(0, -1):

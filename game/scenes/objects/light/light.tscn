@@ -16,6 +16,8 @@ shader_parameter/smoke = ExtResource("3_bjyam")
 script = ExtResource("1_7vorm")
 
 [node name="LightArea" type="Sprite2D" parent="."]
+z_index = 20
+z_as_relative = false
 material = SubResource("ShaderMaterial_75brv")
 texture = ExtResource("2_1udal")
 flip_v = true

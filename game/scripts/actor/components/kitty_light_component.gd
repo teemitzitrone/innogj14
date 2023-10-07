@@ -22,6 +22,7 @@ func ready() -> void:
 
   actor.direction_changed.connect(_on_actor_direction_changed)
   actor.velocity_changed.connect(_on_actor_direction_changed)
+  G.crystal_broken.connect(_on_broke_crystal)
 
 
 func init() -> void:
@@ -48,3 +49,7 @@ func _on_actor_direction_changed():
     light.current_direction = LightScript.Direction.DOWN
   else:
     light.set_direction_vector(actor.direction)
+
+
+func _on_broke_crystal() -> void:
+  charge = 1.0
