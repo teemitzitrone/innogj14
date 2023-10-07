@@ -19,13 +19,11 @@ void fragment() {
    	vec4 smoke_color = texture(smoke, fract(smoke_uv));
    	smoke_color = clamp(smoke_color * size, 0.0, 1.0);
    	COLOR += smoke_color;
-  }
-  else if (COLOR.r == 1.0) { // circle
-    COLOR = vec4(0.0, 0.0, 0.0, 0.5); // TODO:
+  } else if (COLOR.r == 1.0) { // circle
+    COLOR = vec4(0.0, 0.0, 0.0, clamp((1.0 - charge) * 0.5, 0.1, 0.7)); // TODO:
   } else if (COLOR.b == 1.0) { // transparent in light circle
     COLOR = vec4(0.0, 0.0, 0.0, 0.2);
   } else if (COLOR.g == 1.0) { // light area
-    COLOR.rgb = vec3(0.0, 0.0, 0.0);
-    COLOR.a = 1.0 - charge;
+    COLOR.rgb = screen * max(0.5, charge);
   }
 }

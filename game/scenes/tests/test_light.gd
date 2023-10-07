@@ -11,3 +11,7 @@ func _ready():
   var camera = Camera2D.new()
   kitty.add_child.call_deferred(camera)
   camera.make_current.call_deferred()
+
+  var wolf = G.ActorBuilder.create_wolf()
+  wolf.position = Vector2(60, 60)
+  add_child(wolf)

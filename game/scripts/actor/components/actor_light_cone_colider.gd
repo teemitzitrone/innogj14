@@ -25,7 +25,7 @@ func _build_kinematic_body() -> CharacterBody2D:
   body.collision_mask = _get_bits_combined(collision_mask)
 
   return body
-  
+
 func _build_collision_shape() -> CollisionPolygon2D:
   var vectorPack = PackedVector2Array(
     [Vector2(0, 0),
