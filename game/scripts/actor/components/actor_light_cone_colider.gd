@@ -31,16 +31,14 @@ func _build_kinematic_body() -> CharacterBody2D:
   return body
   
 func _build_collision_shape() -> CollisionShape2D:
-  var collision_shape = CollisionShape2D.new()
-#  var rect_shape = RectangleShape2D.new()
   var shape = ConvexPolygonShape2D.new()
   shape.set_point_cloud(PackedVector2Array(
     [Vector2(0, 0),
-     Vector2(length, width/2),
-     Vector2(0, -width),
-     Vector2(-length, width/2)]
+     Vector2(width/2, length),
+     Vector2(-width/2, length)]
     ))
 
+  var collision_shape = CollisionShape2D.new()
   collision_shape.shape = shape
   return collision_shape
 
