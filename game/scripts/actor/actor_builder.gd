@@ -42,7 +42,7 @@ static func create_kitty() -> Actor:
 
 static func getWolfSrite(sprite: int, animation: int, direction: int) -> int:
   var rowLength = 3
-  var animationCount = 3
+  var animationCount = 4
   return (direction * rowLength * animationCount) + (animation * rowLength) + sprite
 
 static func create_wolf() -> Actor:
@@ -79,15 +79,20 @@ static func create_wolf() -> Actor:
     "attack_down": [getWolfSrite(1, 1, 3), getWolfSrite(0, 1, 3), getWolfSrite(1, 1, 3), getWolfSrite(2, 2, 3)],
     "attack_up": [getWolfSrite(1, 1, 2), getWolfSrite(0, 1, 2), getWolfSrite(1, 1, 2), getWolfSrite(2, 2, 2)],
     "attack_right": [getWolfSrite(1, 1, 1), getWolfSrite(0, 1, 1), getWolfSrite(1, 1, 1), getWolfSrite(2, 2, 1)],
-    "attack_left": [getWolfSrite(1, 1, 0), getWolfSrite(0, 1, 0), getWolfSrite(1, 1, 0), getWolfSrite(2, 2, 0)]
+    "attack_left": [getWolfSrite(1, 1, 0), getWolfSrite(0, 1, 0), getWolfSrite(1, 1, 0), getWolfSrite(2, 2, 0)],
+    "bunny_down": [getWolfSrite(1, 3, 3), getWolfSrite(0, 3, 3), getWolfSrite(1, 3, 3), getWolfSrite(2, 3, 3)],
+    "bunny_up": [getWolfSrite(1, 3, 2), getWolfSrite(0, 3, 2), getWolfSrite(1, 3, 2), getWolfSrite(2, 3, 2)],
+    "bunny_right": [getWolfSrite(1, 3, 1), getWolfSrite(0, 3, 1), getWolfSrite(1, 3, 1), getWolfSrite(2, 3, 1)],
+    "bunny_left": [getWolfSrite(1, 3, 0), getWolfSrite(0, 3, 0), getWolfSrite(1, 3, 0), getWolfSrite(2, 3, 0)]
   }
   anim_sprite.animation_nodes = {
     "idle": ["idle_down", "idle_left", "idle_right", "idle_up"],
     "run": ["run_down", "run_left", "run_right", "run_up"],
     "run_dark": ["run_dark_down", "run_dark_left", "run_dark_right", "run_dark_up"],
-    "attack": ["attack_down", "attack_up", "attack_right", "attack_left"]
+    "attack": ["attack_down", "attack_up", "attack_right", "attack_left"],
+    "bunny": ["bunny_down", "bunny_up", "bunny_right", "bunny_left"]
   }
-  anim_sprite.animation_transitions = {"idle": ["run", "run_dark", "attack"], "run": ["idle", "run_dark", "attack"], "run_dark": ["idle", "run"], "attack": ["idle", "run"]}
+  anim_sprite.animation_transitions = {"idle": ["run", "run_dark", "attack", "bunny"], "run": ["idle", "run_dark", "attack", "bunny"], "run_dark": ["idle", "run", "bunny"], "attack": ["idle", "run"], "bunny": ["idle", "run", "attack", "run_dark"]}
   anim_sprite.animation_default = "run"
   actor.add_graphics_component(anim_sprite)
 
