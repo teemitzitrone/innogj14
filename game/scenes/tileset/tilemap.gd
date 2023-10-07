@@ -8,7 +8,7 @@ var effects_layer = 2
 # tiles ids
 var grass = 1
 var crystal_terrain = 8
-var bushed = 13
+var bushes = 13
 var bushes_snall = 14
 var trees = 15
 
@@ -49,6 +49,10 @@ func _break_nearest_crystal(pos: Vector2):
 
 func _scatter_objects():
     var tiles = get_used_cells(ground_layer)
+    var objects = [crystal_terrain, bushes, bushes_snall, trees]
+    var object_count = tiles.size() / 4 # 25% of map are poulated
+    for i in object_count:
+        set_cell(object_layer, tiles[randi() % tiles.size()], objects[randi() % objects.size()], Vector2.ZERO)
     pass
 
 func _on_child_entered_tree(node: Node):
