@@ -29,27 +29,5 @@ func _on_actor_direction_changed():
   if kitty.velocity == Vector2.ZERO:
     light.current_direction = LightScript.Direction.DOWN
   else:
-    light.current_direction = _translate_vector_to_direction(kitty.direction)
-
-
-# TODO: move to light script
-func _translate_vector_to_direction(v: Vector2) -> LightScript.Direction:
-  match v:
-    Vector2(0, -1):
-      return LightScript.Direction.UP
-    Vector2(1, 0):
-      return LightScript.Direction.RIGHT
-    Vector2(-1, 0):
-      return LightScript.Direction.LEFT
-    Vector2(0, 0), Vector2(0, 1), _:
-      if v.x > 0 and v.y < 0:
-        return LightScript.Direction.UP_RIGHT
-      elif v.x > 0 and v.y > 0:
-        return LightScript.Direction.DOWN_RIGHT
-      elif v.x < 0 and v.y > 0:
-        return LightScript.Direction.DOWN_LEFT
-      elif v.x < 0 and v.y < 0:
-        return LightScript.Direction.UP_LEFT
-
-      return LightScript.Direction.DOWN
+    light.set_direction_vector(kitty.direction)
 

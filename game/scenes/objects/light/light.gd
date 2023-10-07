@@ -45,6 +45,30 @@ var LIGHT_ASSET_CONFIG_MAPPING = {
     _update_sprite()
 
 
+func set_direction_vector(v: Vector2) -> void:
+  current_direction = _translate_vector_to_direction(v)
+
+
+func _translate_vector_to_direction(v: Vector2) -> Direction:
+  match v:
+    Vector2(0, -1):
+      return Direction.UP
+    Vector2(1, 0):
+      return Direction.RIGHT
+    Vector2(-1, 0):
+      return Direction.LEFT
+    Vector2(0, 0), Vector2(0, 1), _:
+      if v.x > 0 and v.y < 0:
+        return Direction.UP_RIGHT
+      elif v.x > 0 and v.y > 0:
+        return Direction.DOWN_RIGHT
+      elif v.x < 0 and v.y > 0:
+        return Direction.DOWN_LEFT
+      elif v.x < 0 and v.y < 0:
+        return Direction.UP_LEFT
+
+      return Direction.DOWN
+
 
 func _ready():
   _update_sprite()
