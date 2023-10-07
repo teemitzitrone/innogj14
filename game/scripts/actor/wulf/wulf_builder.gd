@@ -1,12 +1,17 @@
+extends RefCounted
+
 const Actor = preload("res://scripts/actor/actor.gd")
 const ActorPhysicsMoveAndCollideComponent = preload("res://scripts/actor/components/actor_physics_moveandcollide_component.gd")
 const ActorUpdateSpritesheetComponent = preload("res://scripts/actor/components/actor_update_spritesheet_component.gd")
 const ActorSpritesheet2DComponent = preload("res://scripts/actor/components/actor_spritesheet2d_component.gd")
 
-static func getWolfSrite(sprite: int, animation: int, direction: int) -> int:
+static func getImageIdex(sprite: int, animation: int, direction: int) -> int:
   var rowLength = 3
   var animationCount = 4
   return (direction * rowLength * animationCount) + (animation * rowLength) + sprite
+
+static func getPingPong(animation: int, direction: int) -> Array:
+  return [getImageIdex(1, animation, direction), getImageIdex(0, animation, direction), getImageIdex(1, animation, direction), getImageIdex(2, animation, direction)]
 
 static func create_wolf() -> Actor:
   var actor = Actor.new()
@@ -27,33 +32,33 @@ static func create_wolf() -> Actor:
   anim_sprite.frame_time_distance = 0.2
   anim_sprite.region_rect = Rect2(Vector2.ZERO, Vector2(48, 128))
   anim_sprite.animations = {
-    "idle_down": [getWolfSrite(1, 0, 3)],
-    "idle_up": [getWolfSrite(1, 0, 2)],
-    "idle_right": [getWolfSrite(1, 0, 1)],
-    "idle_left": [getWolfSrite(1, 0, 0)],
-    "run_down": [getWolfSrite(1, 0, 3), getWolfSrite(0, 0, 3), getWolfSrite(1, 0, 3), getWolfSrite(2, 0, 3)],
-    "run_up": [getWolfSrite(1, 0, 2), getWolfSrite(0, 0, 2), getWolfSrite(1, 0, 2), getWolfSrite(2, 0, 2)],
-    "run_right": [getWolfSrite(1, 0, 1), getWolfSrite(0, 0, 1), getWolfSrite(1, 0, 1), getWolfSrite(2, 0, 1)],
-    "run_left": [getWolfSrite(1, 0, 0), getWolfSrite(0, 0, 0), getWolfSrite(1, 0, 0), getWolfSrite(2, 0, 0)],
-    "run_dark_down": [getWolfSrite(1, 2, 3), getWolfSrite(0, 2, 3), getWolfSrite(1, 2, 3), getWolfSrite(2, 2, 3)],
-    "run_dark_up": [getWolfSrite(1, 2, 2), getWolfSrite(0, 2, 2), getWolfSrite(1, 2, 2), getWolfSrite(2, 2, 2)],
-    "run_dark_right": [getWolfSrite(1, 2, 1), getWolfSrite(0, 2, 1), getWolfSrite(1, 2, 1), getWolfSrite(2, 2, 1)],
-    "run_dark_left": [getWolfSrite(1, 2, 0), getWolfSrite(0, 2, 0), getWolfSrite(1, 2, 0), getWolfSrite(2, 2, 0)],
-    "attack_down": [getWolfSrite(1, 1, 3), getWolfSrite(0, 1, 3), getWolfSrite(1, 1, 3), getWolfSrite(2, 2, 3)],
-    "attack_up": [getWolfSrite(1, 1, 2), getWolfSrite(0, 1, 2), getWolfSrite(1, 1, 2), getWolfSrite(2, 2, 2)],
-    "attack_right": [getWolfSrite(1, 1, 1), getWolfSrite(0, 1, 1), getWolfSrite(1, 1, 1), getWolfSrite(2, 2, 1)],
-    "attack_left": [getWolfSrite(1, 1, 0), getWolfSrite(0, 1, 0), getWolfSrite(1, 1, 0), getWolfSrite(2, 2, 0)],
-    "bunny_down": [getWolfSrite(1, 3, 3), getWolfSrite(0, 3, 3), getWolfSrite(1, 3, 3), getWolfSrite(2, 3, 3)],
-    "bunny_up": [getWolfSrite(1, 3, 2), getWolfSrite(0, 3, 2), getWolfSrite(1, 3, 2), getWolfSrite(2, 3, 2)],
-    "bunny_right": [getWolfSrite(1, 3, 1), getWolfSrite(0, 3, 1), getWolfSrite(1, 3, 1), getWolfSrite(2, 3, 1)],
-    "bunny_left": [getWolfSrite(1, 3, 0), getWolfSrite(0, 3, 0), getWolfSrite(1, 3, 0), getWolfSrite(2, 3, 0)]
+    "idle_down": [getImageIdex(1, 0, 3)],
+    "idle_up": [getImageIdex(1, 0, 2)],
+    "idle_right": [getImageIdex(1, 0, 1)],
+    "idle_left": [getImageIdex(1, 0, 0)],
+    "run_down": getPingPong(0, 3),
+    "run_up": getPingPong(0, 2),
+    "run_right": getPingPong(0, 1),
+    "run_left": getPingPong(0, 0),
+    "run_dark_down": getPingPong(2, 3),
+    "run_dark_up": getPingPong(2, 2),
+    "run_dark_right": getPingPong(2, 1),
+    "run_dark_left": getPingPong(2, 0),
+    "attack_down": getPingPong(2, 3),
+    "attack_up": getPingPong(2, 2),
+    "attack_right": getPingPong(2, 1),
+    "attack_left": getPingPong(2, 0),
+    "bunny_down": getPingPong(3, 3),
+    "bunny_up": getPingPong(3, 2),
+    "bunny_right": getPingPong(3, 1),
+    "bunny_left": getPingPong(3, 0)
   }
   anim_sprite.animation_nodes = {
     "idle": ["idle_down", "idle_left", "idle_right", "idle_up"],
     "run": ["run_down", "run_left", "run_right", "run_up"],
     "run_dark": ["run_dark_down", "run_dark_left", "run_dark_right", "run_dark_up"],
-    "attack": ["attack_down", "attack_up", "attack_right", "attack_left"],
-    "bunny": ["bunny_down", "bunny_up", "bunny_right", "bunny_left"]
+    "attack": ["attack_down", "attack_left", "attack_right", "attack_up"],
+    "bunny": ["bunny_down", "bunny_left", "bunny_right", "bunny_up"]
   }
   anim_sprite.animation_transitions = {"idle": ["run", "run_dark", "attack", "bunny"], "run": ["idle", "run_dark", "attack", "bunny"], "run_dark": ["idle", "run", "bunny"], "attack": ["idle", "run"], "bunny": ["idle", "run", "attack", "run_dark"]}
   anim_sprite.animation_default = "run"
