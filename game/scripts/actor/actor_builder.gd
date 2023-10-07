@@ -76,13 +76,18 @@ static func create_wolf() -> Actor:
     "run_dark_up": [getWolfSrite(1, 2, 2), getWolfSrite(0, 2, 2), getWolfSrite(1, 2, 2), getWolfSrite(2, 2, 2)],
     "run_dark_right": [getWolfSrite(1, 2, 1), getWolfSrite(0, 2, 1), getWolfSrite(1, 2, 1), getWolfSrite(2, 2, 1)],
     "run_dark_left": [getWolfSrite(1, 2, 0), getWolfSrite(0, 2, 0), getWolfSrite(1, 2, 0), getWolfSrite(2, 2, 0)],
+    "attack_down": [getWolfSrite(1, 1, 3), getWolfSrite(0, 1, 3), getWolfSrite(1, 1, 3), getWolfSrite(2, 2, 3)],
+    "attack_up": [getWolfSrite(1, 1, 2), getWolfSrite(0, 1, 2), getWolfSrite(1, 1, 2), getWolfSrite(2, 2, 2)],
+    "attack_right": [getWolfSrite(1, 1, 1), getWolfSrite(0, 1, 1), getWolfSrite(1, 1, 1), getWolfSrite(2, 2, 1)],
+    "attack_left": [getWolfSrite(1, 1, 0), getWolfSrite(0, 1, 0), getWolfSrite(1, 1, 0), getWolfSrite(2, 2, 0)]
   }
   anim_sprite.animation_nodes = {
     "idle": ["idle_down", "idle_left", "idle_right", "idle_up"],
     "run": ["run_down", "run_left", "run_right", "run_up"],
     "run_dark": ["run_dark_down", "run_dark_left", "run_dark_right", "run_dark_up"],
+    "attack": ["attack_down", "attack_up", "attack_right", "attack_left"]
   }
-  anim_sprite.animation_transitions = {"idle": ["run", "run_dark"], "run": ["idle", "run_dark"], "run_dark": ["idle", "run"]}
+  anim_sprite.animation_transitions = {"idle": ["run", "run_dark", "attack"], "run": ["idle", "run_dark", "attack"], "run_dark": ["idle", "run"], "attack": ["idle", "run"]}
   anim_sprite.animation_default = "run"
   actor.add_graphics_component(anim_sprite)
 
