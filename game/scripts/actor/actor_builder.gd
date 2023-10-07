@@ -40,6 +40,10 @@ static func create_kitty() -> Actor:
 
   return actor
 
+static func getWolfSrite(sprite: int, animation: int, direction: int) -> int:
+  var rowLength = 3
+  var animationCount = 3
+  return (direction * rowLength * animationCount) + (animation * rowLength) + sprite
 
 static func create_wolf() -> Actor:
   var actor = Actor.new()
@@ -60,18 +64,18 @@ static func create_wolf() -> Actor:
   anim_sprite.frame_time_distance = 0.2
   anim_sprite.region_rect = Rect2(Vector2.ZERO, Vector2(48, 128))
   anim_sprite.animations = {
-    "idle_down": [18],
-    "idle_up": [12],
-    "idle_right": [6],
-    "idle_left": [1],
-    "run_down": [19, 18, 19, 20],
-    "run_up": [13, 12, 13, 14],
-    "run_right": [7, 6, 7, 8],
-    "run_left": [1, 0, 1, 2],
-    "run_dark_down": [22, 21, 22, 23],
-    "run_dark_up": [16, 15, 16, 17],
-    "run_dark_right": [10, 9, 10, 11],
-    "run_dark_left": [4, 3, 4, 5],
+    "idle_down": [getWolfSrite(1, 0, 3)],
+    "idle_up": [getWolfSrite(1, 0, 2)],
+    "idle_right": [getWolfSrite(1, 0, 1)],
+    "idle_left": [getWolfSrite(1, 0, 0)],
+    "run_down": [getWolfSrite(1, 0, 3), getWolfSrite(0, 0, 3), getWolfSrite(1, 0, 3), getWolfSrite(2, 0, 3)],
+    "run_up": [getWolfSrite(1, 0, 2), getWolfSrite(0, 0, 2), getWolfSrite(1, 0, 2), getWolfSrite(2, 0, 2)],
+    "run_right": [getWolfSrite(1, 0, 1), getWolfSrite(0, 0, 1), getWolfSrite(1, 0, 1), getWolfSrite(2, 0, 1)],
+    "run_left": [getWolfSrite(1, 0, 0), getWolfSrite(0, 0, 0), getWolfSrite(1, 0, 0), getWolfSrite(2, 0, 0)],
+    "run_dark_down": [getWolfSrite(1, 2, 3), getWolfSrite(0, 2, 3), getWolfSrite(1, 2, 3), getWolfSrite(2, 2, 3)],
+    "run_dark_up": [getWolfSrite(1, 2, 2), getWolfSrite(0, 2, 2), getWolfSrite(1, 2, 2), getWolfSrite(2, 2, 2)],
+    "run_dark_right": [getWolfSrite(1, 2, 1), getWolfSrite(0, 2, 1), getWolfSrite(1, 2, 1), getWolfSrite(2, 2, 1)],
+    "run_dark_left": [getWolfSrite(1, 2, 0), getWolfSrite(0, 2, 0), getWolfSrite(1, 2, 0), getWolfSrite(2, 2, 0)],
   }
   anim_sprite.animation_nodes = {
     "idle": ["idle_down", "idle_left", "idle_right", "idle_up"],
