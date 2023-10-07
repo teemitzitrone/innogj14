@@ -42,6 +42,7 @@ position = Vector2(161, 47)
 texture = ExtResource("8_o6rsg")
 
 [node name="Wulf" type="Sprite2D" parent="."]
+visible = false
 show_behind_parent = true
 light_mask = 16
 visibility_layer = 16

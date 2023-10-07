@@ -13,7 +13,7 @@ var charge: float = 1.0:
     if light != null:
       light.get_node("LightArea").material.set_shader_parameter("charge", charge)
 
-var discharge_speed: float = 0.1
+var discharge_speed: float = 0.05
 
 
 func ready() -> void:
