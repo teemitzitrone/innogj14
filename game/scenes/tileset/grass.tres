@@ -527,6 +527,7 @@ texture = ExtResource("12_r8okm")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.5625, -4.75, 8, -4.875, 8, 8, -8, 8)
+0:0/0/custom_data_0 = true
 0:1/animation_frame_0/duration = 1.0
 0:1/animation_frame_1/duration = 1.0
 0:1/animation_frame_2/duration = 1.0
@@ -535,13 +536,14 @@ texture = ExtResource("12_r8okm")
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [resource]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Grass 0"
 terrain_set_0/terrain_0/color = Color(0.184314, 0.635294, 0.129412, 1)
+custom_data_layer_0/name = "breakable"
+custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_dypes")
 sources/8 = SubResource("TileSetAtlasSource_s5b26")
 sources/13 = SubResource("TileSetAtlasSource_4m4d7")
