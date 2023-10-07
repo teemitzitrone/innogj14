@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://phaux2pl8d16"]
+[gd_scene load_steps=9 format=3 uid="uid://phaux2pl8d16"]
 
 [ext_resource type="Script" path="res://scenes/tests/test_light.gd" id="1_hcndl"]
 [ext_resource type="Texture2D" uid="uid://bv2xmekayieau" path="res://assets/gfx/terrain/bush_3.png" id="2_iamyg"]
+[ext_resource type="Texture2D" uid="uid://him214oofxh" path="res://assets/gfx/terrain/tree-1.png" id="3_k3t8f"]
+[ext_resource type="Texture2D" uid="uid://cv2ofcmvkowbv" path="res://assets/gfx/terrain/tree_2.png" id="4_khawv"]
+[ext_resource type="Texture2D" uid="uid://b5y3sli4uchai" path="res://assets/gfx/terrain/bush_1.png" id="5_q6d7h"]
+[ext_resource type="Texture2D" uid="uid://c0k82dvpggjin" path="res://assets/gfx/terrain/bush_dead.png" id="6_5lm5r"]
+[ext_resource type="Texture2D" uid="uid://cht3n5uvmgvev" path="res://assets/gfx/terrain/bush_2.png" id="7_gwxen"]
+[ext_resource type="Texture2D" uid="uid://beskiur3f7xxp" path="res://assets/gfx/terrain/dead_tree_1.png" id="8_o6rsg"]
 
 [node name="TestLight" type="Node2D"]
 script = ExtResource("1_hcndl")
@@ -9,3 +15,27 @@ script = ExtResource("1_hcndl")
 [node name="Bush3" type="Sprite2D" parent="."]
 position = Vector2(19, 19)
 texture = ExtResource("2_iamyg")
+
+[node name="Tree-1" type="Sprite2D" parent="."]
+position = Vector2(29, 91)
+texture = ExtResource("3_k3t8f")
+
+[node name="Tree2" type="Sprite2D" parent="."]
+position = Vector2(65, 129)
+texture = ExtResource("4_khawv")
+
+[node name="Bush1" type="Sprite2D" parent="."]
+position = Vector2(152, 77)
+texture = ExtResource("5_q6d7h")
+
+[node name="BushDead" type="Sprite2D" parent="."]
+position = Vector2(151, 95)
+texture = ExtResource("6_5lm5r")
+
+[node name="Bush2" type="Sprite2D" parent="."]
+position = Vector2(149, 36)
+texture = ExtResource("7_gwxen")
+
+[node name="DeadTree1" type="Sprite2D" parent="."]
+position = Vector2(161, 47)
+texture = ExtResource("8_o6rsg")
