@@ -28,7 +28,7 @@ static func create_wolf() -> Actor:
 
   var anim_sprite = ActorSpritesheet2DComponent.new()
   anim_sprite.texture = "res://assets/gfx/npc/Wulf.png"
-  anim_sprite.frame_size = Vector2i(3, 8)
+  anim_sprite.frame_size = Vector2i(3, 16)
   anim_sprite.frame_time_distance = 0.2
   anim_sprite.region_rect = Rect2(Vector2.ZERO, Vector2(48, 128))
   anim_sprite.animations = {
