@@ -1,11 +1,16 @@
 extends TileMap
 
-# OBJECT TILE INFORMATION
+# Layer IDs
+var ground_layer = 0
 var object_layer = 1
-var crystal_terrain = 8
-
-# Effects Tile Information
 var effects_layer = 2
+
+# tiles ids
+var grass = 1
+var crystal_terrain = 8
+var bushed = 13
+var bushes_snall = 14
+var trees = 15
 
 # Custom Datas
 var is_breakable = "breakable"
@@ -14,6 +19,7 @@ var player : Node2D
 
 func _ready():
     get_tree().get_current_scene().child_entered_tree.connect(_on_child_entered_tree)
+    _scatter_objects()
 
 func _unhandled_input(_event):
     if player && Input.is_action_just_pressed('action'):
@@ -40,6 +46,10 @@ func _break_nearest_crystal(pos: Vector2):
             set_cell(effects_layer, position_to_check, -1)
             G.crystal_broken.emit()
             break
+
+func _scatter_objects():
+    var tiles = get_used_cells(ground_layer)
+    pass
 
 func _on_child_entered_tree(node: Node):
     if node.get_groups().has('kitty'):
