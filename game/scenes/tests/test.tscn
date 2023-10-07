@@ -1,13 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://btj5n5m4st36m"]
+[gd_scene load_steps=3 format=3 uid="uid://btj5n5m4st36m"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_f0ehy"]
 [ext_resource type="PackedScene" uid="uid://dfhkxprp07nwh" path="res://scenes/tileset/grass.tscn" id="1_i8rfo"]
-[ext_resource type="PackedScene" uid="uid://dp8gmlmfxtvwb" path="res://scenes/objects/crystal/crystal.tscn" id="2_nqhwo"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_f0ehy")
 
 [node name="grass" parent="." instance=ExtResource("1_i8rfo")]
-
-[node name="crystal" parent="." instance=ExtResource("2_nqhwo")]
-position = Vector2(296, 131)
