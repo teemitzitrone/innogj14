@@ -32,8 +32,8 @@ static func create_kitty() -> Actor:
   actor.add_physics_component(physics_component)
   
   var physics_light_cone_component = ActorLightConeComponent.new()
-  physics_light_cone_component.length = 32
-  physics_light_cone_component.width = 16
+  physics_light_cone_component.length = 320
+  physics_light_cone_component.width = 160
   physics_light_cone_component.collision_layer.append(2)
   physics_light_cone_component.collision_mask.append(2)
   actor.add_physics_component(physics_light_cone_component)
