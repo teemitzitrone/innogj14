@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lqf1nthbncco"
-path="res://.godot/imported/cristal_blue.png-3272e004d91d10d9ead33b99296f0785.ctex"
+uid="uid://b5y3sli4uchai"
+path="res://.godot/imported/bush_1.png-05a7c917250f24fdb410129186826839.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cristal_blue.png"
-dest_files=["res://.godot/imported/cristal_blue.png-3272e004d91d10d9ead33b99296f0785.ctex"]
+source_file="res://assets/gfx/terrain/bush_1.png"
+dest_files=["res://.godot/imported/bush_1.png-05a7c917250f24fdb410129186826839.ctex"]
 
 [params]
 
