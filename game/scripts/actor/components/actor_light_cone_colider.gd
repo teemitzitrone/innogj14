@@ -9,7 +9,7 @@ var collision_layer : Array[int] = []
 ## list of masks the body shall interact with
 var collision_mask : Array[int] = []
 
-var _body : CharacterBody2D = null
+var _body : StaticBody2D = null
 
 
 func ready() -> void:
@@ -19,8 +19,9 @@ func ready() -> void:
   actor.velocity_changed.connect(onDirectionChange)
 
 
-func _build_kinematic_body() -> CharacterBody2D:
-  var body = CharacterBody2D.new()
+func _build_kinematic_body() -> StaticBody2D:
+  var body = StaticBody2D.new()
+  body.name = "LightCone"
   var collision_shape = _build_collision_shape()
 
   body.add_child(collision_shape)
@@ -28,6 +29,24 @@ func _build_kinematic_body() -> CharacterBody2D:
   body.collision_mask = _get_bits_combined(collision_mask)
 
   return body
+
+
+#func physics_process(_delta):
+#  for i in _body.get:
+#  for i in _body.get_slide_collision_count():
+#    var collision = _body.get_slide_collision(i)
+#    print("Collided with: ", collision.get_collider().name)
+
+#  var collision = _body.get_slide_collision(0)
+#  if collision == null:
+#    return
+#
+#  if collision.get_collider().is_in_group("wolf"):
+#    print_debug("run wolf, you bunny")
+
+# TODO: move following code to wolf?
+#  if collision.get_collider().is_in_group("kitty"):
+#    G.kill_kitty.emit()
 
 
 func _build_collision_shape() -> CollisionPolygon2D:

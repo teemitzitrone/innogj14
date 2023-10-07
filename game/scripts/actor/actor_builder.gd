@@ -29,6 +29,7 @@ static func create_kitty() -> Actor:
   physics_component.feet_collider = Rect2(0, 4, 16, 4)
   physics_component.collision_layer.append(1)
   physics_component.collision_mask.append(1)
+  physics_component.groups_data = ["kitty"]
   actor.add_physics_component(physics_component)
 
   var physics_light_cone_component = ActorLightConeComponent.new()

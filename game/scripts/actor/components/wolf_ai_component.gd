@@ -6,22 +6,41 @@ enum AiState {
 }
 
 
-const INTERACTION_RADIUS: float = 60.0 # Radius in which player has to be, to be followed
+const INTERACTION_RADIUS: float = 70.0 # Radius in which player has to be, to be followed
 
 
-var current_state: AiState = AiState.NORMAL
+var current_state: AiState = AiState.NORMAL:
+  set(value):
+    current_state = value
+    actor.component_message_send.emit("ai_state_changed", value)
 
+
+var runaway_direction: Vector2
 
 
 func ready():
-  pass
+  runaway_direction = Vector2.DOWN if actor.direction == Vector2.ZERO else actor.direction * -1
+  actor.component_message_send.connect(on_message)
 
 
 func process(_delta):
-  if current_state == AiState.BUNNY_RUN_AWAY:
-    return
-
   var centerPoint = G.get_viewport().get_camera_2d().get_screen_center_position()
+#  print_debug(actor.global_position.distance_to(centerPoint))
+  if current_state == AiState.BUNNY_RUN_AWAY:
+    if actor.global_position.distance_to(centerPoint) < INTERACTION_RADIUS:
+      actor.direction = runaway_direction
+      actor.velocity = actor.direction * actor.speed
+    else:
+      current_state = AiState.NORMAL
+      actor.velocity = Vector2.ZERO
+      actor.component_message_send.emit("ai_state_changed", 0)
+    return
+    # get opposite direction
+    # run into opposite direction for x px
+    #
+#    return
+
+
   var direction = Vector2.ZERO
 
   if actor.global_position.distance_to(centerPoint) < INTERACTION_RADIUS:
@@ -45,3 +64,11 @@ func process(_delta):
 
   if actor.velocity != Vector2.ZERO:
     actor.direction = direction
+
+
+func on_message(type, info):
+  if type == "collision":
+    if info == "wolf:lightcone":
+      current_state = AiState.BUNNY_RUN_AWAY
+      actor.component_message_send.emit("ai_state_changed", 1)
+      runaway_direction = Vector2.DOWN if actor.direction == Vector2.ZERO else actor.direction * -1

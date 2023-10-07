@@ -16,6 +16,11 @@ var collision_layer : Array[int] = []
 ## list of masks the body shall interact with
 var collision_mask : Array[int] = []
 
+var groups_data: Array = []
+
+# is dirty, but this is a gamejam
+var is_wolf := false
+
 
 # private variables (precede with "_")
 var _body : CharacterBody2D = null
@@ -39,6 +44,14 @@ func ready() -> void:
 func physics_process(_delta: float) -> void:
   _body.velocity = actor.velocity
   _body.move_and_slide()
+
+  if is_wolf:
+    for i in _body.get_slide_collision_count():
+      var collision = _body.get_slide_collision(i)
+      if collision.get_collider().name == "LightCone":
+        actor.component_message_send.emit("collision", "wolf:lightcone")
+
+
   if _body.position != Vector2.ZERO:
     actor.position += _body.position
     _body.position = Vector2.ZERO
@@ -47,6 +60,8 @@ func physics_process(_delta: float) -> void:
 # private methods
 func _build_kinematic_body() -> CharacterBody2D:
   var body = CharacterBody2D.new()
+  for g in groups_data:
+    body.add_to_group(g)
   var collision_shape = _build_collision_shape()
 
   body.add_child(collision_shape)

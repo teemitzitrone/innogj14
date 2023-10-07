@@ -28,6 +28,7 @@ static func create_wolf() -> Actor:
   physics_component.collision_layer.append(2)
   physics_component.collision_mask.append(1)
   physics_component.collision_mask.append(2)
+  physics_component.is_wolf = true # hack hack gamejam
   actor.add_physics_component(physics_component)
 
   var update_spritesheet_component = ActorUpdateSpritesheetComponent.new()
