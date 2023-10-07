@@ -70,7 +70,6 @@ func _on_actor_component_message_send(message_type, info) -> void:
 
   elif message_type == "show_on_top":
     if info:
-      _sprite.y_sort_enabled = true
       _sprite.z_index = 30
       _sprite.z_as_relative = false
     else:

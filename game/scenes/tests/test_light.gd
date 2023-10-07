@@ -13,5 +13,5 @@ func _ready():
   camera.make_current.call_deferred()
 
   var wolf = G.ActorBuilder.create_wolf()
-  wolf.position = Vector2(60, 60)
+  wolf.position = Vector2(100, 100)
   add_child(wolf)

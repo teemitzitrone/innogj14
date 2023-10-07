@@ -45,7 +45,7 @@ static func create_kitty() -> Actor:
     "res://assets/gfx/pc/kitty.png",
     {}
   )
-  spritesheet_component.show_on_top = true
+  spritesheet_component.show_on_top = false
 
   actor.add_graphics_component(spritesheet_component)
 

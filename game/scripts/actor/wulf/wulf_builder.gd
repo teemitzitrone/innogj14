@@ -4,6 +4,7 @@ const Actor = preload("res://scripts/actor/actor.gd")
 const ActorPhysicsMoveAndCollideComponent = preload("res://scripts/actor/components/actor_physics_moveandcollide_component.gd")
 const ActorUpdateSpritesheetComponent = preload("res://scripts/actor/components/wolf_sprite_update_component.gd")
 const ActorSpritesheet2DComponent = preload("res://scripts/actor/components/actor_spritesheet2d_component.gd")
+const WolfAiComponent = preload("res://scripts/actor/components/wolf_ai_component.gd")
 
 static func getImageIdex(sprite: int, animation: int, direction: int) -> int:
   var rowLength = 3
@@ -16,9 +17,13 @@ static func getPingPong(animation: int, direction: int) -> Array:
 static func create_wolf() -> Actor:
   var actor = Actor.new()
   actor.add_to_group("wolf")
+  actor.speed = 70.0
+
+  var input_component = WolfAiComponent.new()
+  actor.add_logic_component(input_component)
 
   var physics_component = ActorPhysicsMoveAndCollideComponent.new()
-  physics_component.feet_collider = Rect2(16, 2, 32, 4)
+  physics_component.feet_collider = Rect2(0, 2, 8, 4)
   physics_component.collision_layer.append(1)
   physics_component.collision_mask.append(1)
   actor.add_physics_component(physics_component)
@@ -30,7 +35,7 @@ static func create_wolf() -> Actor:
   anim_sprite.texture = "res://assets/gfx/npc/Wulf.png"
   anim_sprite.frame_size = Vector2i(3, 16)
   anim_sprite.frame_time_distance = 0.2
-  anim_sprite.region_rect = Rect2(Vector2.ZERO, Vector2(48, 128))
+  anim_sprite.region_rect = Rect2(Vector2.ZERO, Vector2(48, 256))
   anim_sprite.animations = {
     "idle_down": [getImageIdex(1, 0, 3)],
     "idle_up": [getImageIdex(1, 0, 2)],
