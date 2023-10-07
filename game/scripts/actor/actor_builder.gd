@@ -17,12 +17,13 @@ const ActorUpdateSpritesheetComponent = preload("res://scripts/actor/components/
 
 static func create_kitty() -> Actor:
   var actor = Actor.new()
+  actor.add_to_group("kitty")
 
   var input_component = ActorInputMoveComponent.new()
   actor.add_logic_component(input_component)
 
   var physics_component = ActorPhysicsMoveAndCollideComponent.new()
-  physics_component.feet_collider = Rect2(8, -6, 16, 4)
+  physics_component.feet_collider = Rect2(0, 4, 16, 4)
   physics_component.collision_layer.append(1)
   physics_component.collision_mask.append(1)
   actor.add_physics_component(physics_component)
@@ -42,6 +43,7 @@ static func create_kitty() -> Actor:
 
 static func create_wolf() -> Actor:
   var actor = Actor.new()
+  actor.add_to_group("wolf")
 
   var physics_component = ActorPhysicsMoveAndCollideComponent.new()
   physics_component.feet_collider = Rect2(16, 2, 32, 4)

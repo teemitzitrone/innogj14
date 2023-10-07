@@ -3,6 +3,8 @@ extends Node2D
 
 
 signal component_message_send(message_type, info)
+signal direction_changed()
+signal velocity_changed()
 
 
 const ActorComponent = preload("res://scripts/actor/actor_component.gd")
@@ -13,6 +15,7 @@ var velocity := Vector2.ZERO:
     return velocity
   set(value):
     velocity = value
+    emit_signal("velocity_changed")
 
 var speed := 95.0:
   get:
@@ -25,6 +28,7 @@ var direction := Vector2.ZERO:
     return direction
   set(value):
     direction = value
+    emit_signal("direction_changed")
 
 
 ## input/AI/...
