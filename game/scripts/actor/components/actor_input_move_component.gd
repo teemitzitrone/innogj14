@@ -46,6 +46,6 @@ func _apply_movement(direction: Vector2) -> void:
 
 func smooth_out():
   if abs(target.x - actor.position.x) < 10.0:
-    actor.position.x = target.x
+    target.x = actor.position.x
   if abs(target.y - actor.position.y) < 10.0:
-    actor.position.y = target.y
+    target.y = actor.position.y
