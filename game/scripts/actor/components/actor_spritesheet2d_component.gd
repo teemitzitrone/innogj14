@@ -38,6 +38,9 @@ var animation_transitions := {}
 ## default animation name
 var animation_default := ""
 
+## show on top
+var show_on_top := false
+
 
 var _sprite: Sprite2D = null
 var _animation_player: AnimationPlayer = null
@@ -83,6 +86,10 @@ func _init_sprite() -> void:
   _sprite.centered = true
 
   _sprite.y_sort_enabled = true
+
+  if show_on_top:
+    _sprite.y_sort_enabled = true
+    _sprite.z_index = 10
 
   if shader:
     _sprite.material = shader

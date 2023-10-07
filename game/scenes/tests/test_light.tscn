@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://phaux2pl8d16"]
+[gd_scene load_steps=10 format=3 uid="uid://phaux2pl8d16"]
 
 [ext_resource type="Script" path="res://scenes/tests/test_light.gd" id="1_hcndl"]
 [ext_resource type="Texture2D" uid="uid://bv2xmekayieau" path="res://assets/gfx/terrain/bush_3.png" id="2_iamyg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c0k82dvpggjin" path="res://assets/gfx/terrain/bush_dead.png" id="6_5lm5r"]
 [ext_resource type="Texture2D" uid="uid://cht3n5uvmgvev" path="res://assets/gfx/terrain/bush_2.png" id="7_gwxen"]
 [ext_resource type="Texture2D" uid="uid://beskiur3f7xxp" path="res://assets/gfx/terrain/dead_tree_1.png" id="8_o6rsg"]
+[ext_resource type="Texture2D" uid="uid://bauhjf1f1bljm" path="res://assets/gfx/npc/Wulf.png" id="9_x7s3e"]
 
 [node name="TestLight" type="Node2D"]
 script = ExtResource("1_hcndl")
@@ -39,3 +40,14 @@ texture = ExtResource("7_gwxen")
 [node name="DeadTree1" type="Sprite2D" parent="."]
 position = Vector2(161, 47)
 texture = ExtResource("8_o6rsg")
+
+[node name="Wulf" type="Sprite2D" parent="."]
+show_behind_parent = true
+light_mask = 16
+visibility_layer = 16
+z_index = 10
+y_sort_enabled = true
+position = Vector2(107, 90)
+texture = ExtResource("9_x7s3e")
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 16)

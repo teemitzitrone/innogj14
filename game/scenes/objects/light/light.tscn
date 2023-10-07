@@ -9,6 +9,7 @@
 shader = ExtResource("1_4e3x8")
 shader_parameter/speed = 0.05
 shader_parameter/size = 0.008
+shader_parameter/charge = 1.0
 shader_parameter/smoke = ExtResource("3_bjyam")
 
 [node name="Light" type="Node2D"]

@@ -14,6 +14,7 @@ const ActorPhysicsMoveAndCollideComponent = preload("res://scripts/actor/compone
 const ActorSpritesheet2DComponent = preload("res://scripts/actor/components/actor_spritesheet2d_component.gd")
 const ActorUpdateSpritesheetComponent = preload("res://scripts/actor/components/actor_update_spritesheet_component.gd")
 
+const KittyLightComponent = preload("res://scripts/actor/components/kitty_light_component.gd")
 
 static func create_kitty() -> Actor:
   var actor = Actor.new()
@@ -35,8 +36,12 @@ static func create_kitty() -> Actor:
     "res://assets/gfx/pc/kitty.png",
     {}
   )
+  spritesheet_component.show_on_top = true
 
   actor.add_graphics_component(spritesheet_component)
+
+  var light_comp = KittyLightComponent.new()
+  actor.add_graphics_component(light_comp)
 
   return actor
 
