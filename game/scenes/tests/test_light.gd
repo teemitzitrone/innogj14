@@ -33,23 +33,23 @@ func _on_actor_direction_changed():
 
 
 # TODO: move to light script
-# TODO: to make diagonal possible, check against x,y < or > 0
 func _translate_vector_to_direction(v: Vector2) -> LightScript.Direction:
   match v:
     Vector2(0, -1):
       return LightScript.Direction.UP
-    Vector2(1, -1):
-      return LightScript.Direction.UP_RIGHT
     Vector2(1, 0):
       return LightScript.Direction.RIGHT
-    Vector2(1, 1):
-      return LightScript.Direction.DOWN_RIGHT
-    Vector2(-1, 1):
-      return LightScript.Direction.DOWN_LEFT
     Vector2(-1, 0):
       return LightScript.Direction.LEFT
-    Vector2(-1, -1):
-      return LightScript.Direction.UP_LEFT
     Vector2(0, 0), Vector2(0, 1), _:
+      if v.x > 0 and v.y < 0:
+        return LightScript.Direction.UP_RIGHT
+      elif v.x > 0 and v.y > 0:
+        return LightScript.Direction.DOWN_RIGHT
+      elif v.x < 0 and v.y > 0:
+        return LightScript.Direction.DOWN_LEFT
+      elif v.x < 0 and v.y < 0:
+        return LightScript.Direction.UP_LEFT
+
       return LightScript.Direction.DOWN
 

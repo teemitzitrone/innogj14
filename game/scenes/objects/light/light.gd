@@ -25,16 +25,16 @@ class LightAssetConfig:
     flip_horizontal = fliph
     flip_vertical = flipv
 
-# TODO: configure flipping for diagonal directions
+
 var LIGHT_ASSET_CONFIG_MAPPING = {
   Direction.UP: LightAssetConfig.new(Vector2.ZERO, false, true),
   Direction.UP_RIGHT: LightAssetConfig.new(Vector2(0, 360), false, false),
   Direction.RIGHT: LightAssetConfig.new(Vector2(0, 180), false, false),
-  Direction.DOWN_RIGHT: LightAssetConfig.new(Vector2(0, 360), false, false),
+  Direction.DOWN_RIGHT: LightAssetConfig.new(Vector2(0, 360), false, true),
   Direction.DOWN: LightAssetConfig.new(Vector2.ZERO, false, false),
-  Direction.DOWN_LEFT: LightAssetConfig.new(Vector2(0, 360), false, false),
+  Direction.DOWN_LEFT: LightAssetConfig.new(Vector2(0, 360), true, true),
   Direction.LEFT: LightAssetConfig.new(Vector2(0, 180), true, false),
-  Direction.UP_LEFT: LightAssetConfig.new(Vector2(0,360), false, false),
+  Direction.UP_LEFT: LightAssetConfig.new(Vector2(0,360), true, false),
 }
 
 @export var current_direction: Direction:
