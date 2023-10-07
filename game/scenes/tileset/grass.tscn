@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfhkxprp07nwh"]
+[gd_scene load_steps=3 format=3 uid="uid://dfhkxprp07nwh"]
 
 [ext_resource type="TileSet" uid="uid://f5lo2enf7evb" path="res://scenes/tileset/grass.tres" id="1_yjilh"]
+[ext_resource type="Script" path="res://scenes/tileset/tilemap.gd" id="2_lcs4h"]
 
 [node name="grass" type="TileMap"]
 y_sort_enabled = true
@@ -23,3 +24,4 @@ layer_2/y_sort_enabled = true
 layer_2/y_sort_origin = 0
 layer_2/z_index = 2
 layer_2/tile_data = PackedInt32Array(720927, 8, 1, 1441830, 8, 1, 1441833, 8, 1, 1441835, 8, 1, 1441836, 8, 1, 1441837, 8, 1, 1310768, 8, 1, 1376293, 8, 1, 1310755, 8, 1, 1245217, 8, 1, 1114143, 8, 1, 1114142, 8, 1, 458797, 8, 1, 327723, 8, 1, 262184, 8, 1, 327715, 8, 1, 917532, 8, 1, 655385, 8, 1, 589848, 8, 1, 524310, 8, 1, 458772, 8, 1, 1048580, 8, 1, 1048577, 8, 1, 1048575, 8, 1, 983039, 8, 1, 917506, 8, 1, 196605, 8, 1, 196606, 8, 1, 196612, 8, 1, 196613, 8, 1, 262152, 8, 1, 262154, 8, 1, 327692, 8, 1, 327693, 8, 1)
+script = ExtResource("2_lcs4h")
