@@ -29,7 +29,6 @@ var is_breakable = "breakable"
 var player : Node2D
 
 func _ready():
-    get_tree().get_current_scene().child_entered_tree.connect(_on_child_entered_tree)
     _complete_map()
 
 func _unhandled_input(_event):
@@ -67,8 +66,3 @@ func _add_collision_border(tiles):
         for neighbour in neighbours:
             if get_cell_source_id(ground_layer, tile + Vector2i(neighbour)) == -1:
                 set_cell(ground_layer, tile + Vector2i(neighbour), grass, Vector2(9, 1))
-
-func _on_child_entered_tree(node: Node):
-    if node.get_groups().has('kitty'):
-        player = node
-        get_tree().get_current_scene().child_entered_tree.disconnect(_on_child_entered_tree)

@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var tile_map = $TileMap
 
 func _ready():
   var kitty = G.ActorBuilder.create_kitty()
@@ -8,9 +9,9 @@ func _ready():
   var camera = Camera2D.new()
   kitty.add_child(camera)
   camera.make_current()
+  tile_map.player = kitty
 #  camera.zoom = Vector2(0.4, 0.4)
 
   var wolf = G.ActorBuilder.create_wolf()
   wolf.position = Vector2(60, 60)
   add_child(wolf)
-
