@@ -17,7 +17,7 @@ static func getPingPong(animation: int, direction: int) -> Array:
 static func create_wolf() -> Actor:
   var actor = Actor.new()
   actor.add_to_group("wolf")
-  actor.speed = 70.0
+  actor.speed = 30.0
 
   var input_component = WolfAiComponent.new()
   actor.add_logic_component(input_component)
