@@ -31,24 +31,6 @@ func _build_kinematic_body() -> StaticBody2D:
   return body
 
 
-#func physics_process(_delta):
-#  for i in _body.get:
-#  for i in _body.get_slide_collision_count():
-#    var collision = _body.get_slide_collision(i)
-#    print("Collided with: ", collision.get_collider().name)
-
-#  var collision = _body.get_slide_collision(0)
-#  if collision == null:
-#    return
-#
-#  if collision.get_collider().is_in_group("wolf"):
-#    print_debug("run wolf, you bunny")
-
-# TODO: move following code to wolf?
-#  if collision.get_collider().is_in_group("kitty"):
-#    G.kill_kitty.emit()
-
-
 func _build_collision_shape() -> CollisionPolygon2D:
   var vectorPack = PackedVector2Array(
     [Vector2(0, 0),

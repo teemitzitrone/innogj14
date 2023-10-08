@@ -1,0 +1,52 @@
+name: "godot export"
+on: push
+
+env:
+  GODOT_VERSION: 4.1.2
+  EXPORT_NAME: a-kittys-dream
+
+jobs:
+  export-web:
+    environment: itch.io workflow
+    name: Web Export
+    runs-on: ubuntu-latest
+    container:
+      image: docker://barichello/godot-ci:4.1.2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup
+        run: |
+          mkdir -v -p build/linux build/windows build/mac build/web ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Web Build
+        run: |
+          cd ./code
+          godot -v --export "HTML5" ../build/web/index.html
+      - name: Zip Artifact
+        uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r ${{ env.EXPORT_NAME }}-web.zip ./build/web
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.EXPORT_NAME }}-web
+          path: ${{ env.EXPORT_NAME }}-web.zip
+  publish-web:
+    environment: itch.io workflow
+    name: Publish to itch.io (Web)
+    needs: export-web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact (Web)
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ env.EXPORT_NAME }}-web
+      - name: deploy to itch.io (Web)
+        uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: html5
+          ITCH_GAME: ${{ env.EXPORT_NAME }}
+          ITCH_USER: ${{ env.EXPORT_USER }}
+          PACKAGE: ${{ env.EXPORT_NAME }}-web.zip
