@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://lq54ryssieon"]
+
+[ext_resource type="Texture2D" uid="uid://bvugfb16pi0bj" path="res://assets/gfx/pc/kitty.png" id="3_evqjp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jikgw"]
+atlas = ExtResource("3_evqjp")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt7k4"]
+atlas = ExtResource("3_evqjp")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qc81"]
+atlas = ExtResource("3_evqjp")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fp0ap"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jikgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt7k4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qc81")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Kitty" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fp0ap")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.134786

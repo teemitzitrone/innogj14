@@ -4,20 +4,24 @@ extends Node2D
 #const Start = preload("")
 const Level1 = preload("res://scenes/levels/level_1.tscn")
 const GameOver = preload("res://scenes/ui/gameover.tscn")
+const Start = preload("res://scenes/ui/start.tscn")
 
 
 func _ready():
-  _load_scene(Level1)
+  _on_start_btn_clicked()
 
   G.go_to_start.connect(_on_start_btn_clicked)
   G.kill_kitty.connect(_on_game_over)
+  G.start_game.connect(_on_start_game)
 
 func _on_game_over():
   _load_scene(GameOver)
 
 
 func _on_start_btn_clicked():
-  # TODO: load start screen instead
+   _load_scene(Start)
+
+func _on_start_game():
   _load_scene(Level1)
 
 
