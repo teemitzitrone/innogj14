@@ -48,5 +48,5 @@ jobs:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: html5
           ITCH_GAME: ${{ env.EXPORT_NAME }}
-          ITCH_USER: ${{ env.EXPORT_USER }}
+          ITCH_USER: ${{ secrets.EXPORT_USER }}
           PACKAGE: ${{ env.EXPORT_NAME }}-web.zip
