@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://du63ahhxiy06c"]
+
+[ext_resource type="Script" path="res://scenes/wolf.gd" id="1_cr6oj"]
+[ext_resource type="Texture2D" uid="uid://bauhjf1f1bljm" path="res://assets/gfx/npc/Wulf.png" id="2_uf18u"]
+
+[node name="wolf" type="Node2D"]
+script = ExtResource("1_cr6oj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uf18u")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)

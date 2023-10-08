@@ -11,7 +11,3 @@ func _ready():
   camera.make_current()
   tile_map.player = kitty
 #  camera.zoom = Vector2(0.4, 0.4)
-
-  var wolf = G.ActorBuilder.create_wolf()
-  wolf.position = Vector2(60, 60)
-  add_child(wolf)

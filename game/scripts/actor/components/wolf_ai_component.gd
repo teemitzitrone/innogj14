@@ -13,6 +13,8 @@ var current_state: AiState = AiState.NORMAL:
   set(value):
     current_state = value
     actor.component_message_send.emit("ai_state_changed", value)
+    if value == AiState.NORMAL:
+      actor.isBunny = false
 
 
 var runaway_direction: Vector2
@@ -65,6 +67,7 @@ func process(_delta):
 func on_message(type, info):
   if type == "collision":
     if info == "wolf:lightcone":
+      actor.isBunny = true
       current_state = AiState.BUNNY_RUN_AWAY
       actor.component_message_send.emit("ai_state_changed", 1)
       runaway_direction = Vector2.DOWN if actor.direction == Vector2.ZERO else actor.direction * -1

@@ -51,7 +51,7 @@ func physics_process(_delta: float) -> void:
 #      print_debug(collision.get_collider().name)
       if collision.get_collider().name == "LightCone":
         actor.component_message_send.emit("collision", "wolf:lightcone")
-      elif collision.get_collider().is_in_group("kitty"):
+      elif not actor.isBunny and collision.get_collider().is_in_group("kitty"):
         G.kill_kitty.emit()
 
 

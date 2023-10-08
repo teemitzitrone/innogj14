@@ -11,6 +11,7 @@ var crystal_terrain = 8
 var bushes = 13
 var bushes_snall = 14
 var trees = 15
+var wolf = 2
 
 var neighbours = [
         Vector2.UP,
@@ -31,8 +32,8 @@ var player : Node2D
 func _ready():
     _complete_map()
 
-func _unhandled_input(_event):
-    if player && Input.is_action_just_pressed('action'):
+func _unhandled_input(event):
+    if player && (Input.is_action_just_pressed('action') or (event is InputEventMouseButton and Input.is_action_just_pressed("click") and event.is_double_click())):
         var action_map_position = local_to_map(player.global_position)
         _break_nearest_crystal(action_map_position)
 
@@ -52,11 +53,16 @@ func _complete_map():
     _add_collision_border(tiles)
 
 func _scatter_objects(tiles: Array):
-    var objects = [crystal_terrain, bushes, bushes_snall, trees]
+    var objects = [crystal_terrain, bushes, bushes_snall, trees, wolf]
     var object_count = tiles.size() / 4 # 25% of map are poulated
     for i in object_count:
         var source_id = objects[randi() % objects.size()]
         var coords = tiles[randi() % tiles.size()]
+
+        if source_id == wolf:
+          set_cell(object_layer, coords, 0, Vector2.ZERO, wolf)
+          continue
+
         set_cell(object_layer, coords, source_id, Vector2.ZERO)
         if source_id == crystal_terrain:
             set_cell(effects_layer, coords, source_id, Vector2.DOWN)

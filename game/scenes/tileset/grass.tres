@@ -1,10 +1,14 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://f5lo2enf7evb"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://f5lo2enf7evb"]
 
+[ext_resource type="PackedScene" uid="uid://du63ahhxiy06c" path="res://scenes/wolf.tscn" id="1_0uv46"]
 [ext_resource type="Texture2D" uid="uid://ckgty72mqoeby" path="res://assets/gfx/terrain/grass_green.png" id="2_47nrh"]
 [ext_resource type="Texture2D" uid="uid://bb0ldynlhktwx" path="res://assets/gfx/terrain/bushes.png" id="2_l0dwx"]
 [ext_resource type="Texture2D" uid="uid://b5ybmmr8nmyro" path="res://assets/gfx/terrain/bushes_small.png" id="3_m4euv"]
 [ext_resource type="Texture2D" uid="uid://mu2pdgsjsvvv" path="res://assets/gfx/terrain/trees.png" id="4_ghn53"]
 [ext_resource type="Texture2D" uid="uid://lqf1nthbncco" path="res://assets/gfx/terrain/cristal_blue.png" id="12_r8okm"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vscr2"]
+scenes/2/scene = ExtResource("1_0uv46")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dypes"]
 texture = ExtResource("2_47nrh")
@@ -550,4 +554,5 @@ sources/8 = SubResource("TileSetAtlasSource_s5b26")
 sources/13 = SubResource("TileSetAtlasSource_4m4d7")
 sources/14 = SubResource("TileSetAtlasSource_eeri8")
 sources/15 = SubResource("TileSetAtlasSource_6a708")
+sources/0 = SubResource("TileSetScenesCollectionSource_vscr2")
 tile_proxies/coords_level = [[0, Vector2i(0, 0)], [13, Vector2i(0, 0)], [2, Vector2i(0, 0)], [13, Vector2i(1, 0)], [3, Vector2i(0, 0)], [13, Vector2i(2, 0)], [4, Vector2i(0, 0)], [13, Vector2i(3, 0)], [5, Vector2i(0, 0)], [14, Vector2i(0, 0)], [6, Vector2i(0, 0)], [14, Vector2i(1, 0)], [7, Vector2i(0, 0)], [14, Vector2i(2, 0)], [9, Vector2i(0, 0)], [15, Vector2i(0, 0)], [10, Vector2i(0, 0)], [15, Vector2i(1, 0)], [11, Vector2i(0, 0)], [15, Vector2i(2, 0)], [12, Vector2i(0, 0)], [15, Vector2i(3, 0)]]

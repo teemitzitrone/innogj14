@@ -9,6 +9,7 @@ signal velocity_changed()
 
 const ActorComponent = preload("res://scripts/actor/actor_component.gd")
 
+var isBunny = false
 
 var velocity := Vector2.ZERO:
   get:
