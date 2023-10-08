@@ -4,7 +4,7 @@ const DISTANCE_REQUIREMENT = 70.0
 
 var bunny_active := false
 
-#ai_state_changed
+
 func ready():
   actor.component_message_send.connect(on_message)
 

@@ -2,12 +2,6 @@ extends "res://scripts/actor/actor_component.gd"
 ## ActorPhysicsMoveAndCollideComponent
 
 
-# signals
-# enums
-# inner classes
-# constants
-# exported variables
-# public variables
 var feet_collider := Rect2()
 
 ## list of layers the body shall be in
@@ -25,15 +19,6 @@ var is_wolf := false
 # private variables (precede with "_")
 var _body : CharacterBody2D = null
 
-# onready variables
-
-# optional public static methods
-#static func get_ctor_params() -> Array:
-#  return []
-
-# optional built-in virtual _init method
-#func _init() -> void:
-#  pass
 
 # built-in virtual _ready method
 func ready() -> void:
@@ -48,7 +33,6 @@ func physics_process(_delta: float) -> void:
   if is_wolf:
     for i in _body.get_slide_collision_count():
       var collision = _body.get_slide_collision(i)
-#      print_debug(collision.get_collider().name)
       if collision.get_collider().name == "LightCone":
         actor.component_message_send.emit("collision", "wolf:lightcone")
       elif not actor.isBunny and collision.get_collider().is_in_group("kitty"):
@@ -58,9 +42,8 @@ func physics_process(_delta: float) -> void:
   if _body.position != Vector2.ZERO:
     actor.position += _body.position
     _body.position = Vector2.ZERO
-# getters & setters
-# public methods
-# private methods
+
+
 func _build_kinematic_body() -> CharacterBody2D:
   var body = CharacterBody2D.new()
   for g in groups_data:
@@ -76,13 +59,10 @@ func _build_kinematic_body() -> CharacterBody2D:
 
 func _build_collision_shape() -> CollisionShape2D:
   var collision_shape = CollisionShape2D.new()
-#  var rect_shape = RectangleShape2D.new()
   var shape = CapsuleShape2D.new()
 
   shape.height = feet_collider.size.x
   shape.radius = feet_collider.size.y
-#  shape.transform.rotation = 90
-#  shape.rotation = 90
 
   collision_shape.shape = shape
   collision_shape.position = feet_collider.position

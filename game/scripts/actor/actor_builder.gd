@@ -2,10 +2,6 @@ extends RefCounted
 ## ActorBuilder
 
 
-# signals
-# enums
-# inner classes
-# constants
 const Actor = preload("res://scripts/actor/actor.gd")
 
 const ActorComponent = preload("res://scripts/actor/actor_component.gd")
@@ -57,8 +53,6 @@ static func create_kitty() -> Actor:
 
 static func create_wolf() -> Actor:
   return WulfBuilder.create_wolf()
-
-
 
 
 static func _create_character_animation_sprite(tex: String, replacement_colors := {}) -> ActorSpritesheet2DComponent:
