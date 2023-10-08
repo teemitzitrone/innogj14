@@ -21,7 +21,7 @@ jobs:
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
       - name: Web Build
         run: |
-          cd ./code
+          cd ./game
           godot -v --export "HTML5" ../build/web/index.html
       - name: Zip Artifact
         uses: montudor/action-zip@v0.1.0
