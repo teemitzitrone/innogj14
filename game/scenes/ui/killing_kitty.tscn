@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8pbnhdmb386s"]
+
+[ext_resource type="Shader" path="res://assets/shader/exploding_kitten.gdshader" id="1_pk66k"]
+[ext_resource type="Texture2D" uid="uid://bt66qcpfbw3ej" path="res://assets/gfx/noise.png" id="2_0man5"]
+[ext_resource type="Texture2D" uid="uid://bvugfb16pi0bj" path="res://assets/gfx/pc/kitty.png" id="2_3wrl2"]
+
+[sub_resource type="Gradient" id="Gradient_bnkht"]
+offsets = PackedFloat32Array(0, 0.542403, 0.759717, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.925781, 0.102207, 0, 1, 1, 0.853497, 0, 1, 1, 0.854902, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_md6jy"]
+gradient = SubResource("Gradient_bnkht")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1chcr"]
+shader = ExtResource("1_pk66k")
+shader_parameter/progress = 1.016
+shader_parameter/width = 0.742
+shader_parameter/timed = true
+shader_parameter/speed = 0.423
+shader_parameter/angle = 0.0
+shader_parameter/noise = ExtResource("2_0man5")
+shader_parameter/colorCurve = SubResource("GradientTexture2D_md6jy")
+
+[node name="KillingKitty" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_1chcr")
+texture = ExtResource("2_3wrl2")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
