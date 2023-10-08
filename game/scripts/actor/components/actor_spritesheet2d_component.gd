@@ -73,7 +73,7 @@ func _on_actor_component_message_send(message_type, info) -> void:
       _sprite.z_index = 30
       _sprite.z_as_relative = false
     else:
-      _sprite.z_index = 0
+      _sprite.z_index = 5
       _sprite.z_as_relative = true
 
 
