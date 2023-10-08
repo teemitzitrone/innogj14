@@ -14,7 +14,7 @@ jobs:
       image: docker://barichello/godot-ci:4.1.2
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
       - name: Setup
         run: |
           mkdir -v -p build/linux build/windows build/mac build/web ~/.local/share/godot/templates
@@ -36,7 +36,7 @@ jobs:
     environment: itch.io workflow
     name: Publish to itch.io (Web)
     needs: export-web
-    runs-on: "ubuntu-20.04"
+    runs-on: ubuntu-latest
     steps:
       - name: Download Artifact (Web)
         uses: actions/download-artifact@v3
