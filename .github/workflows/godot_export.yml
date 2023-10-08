@@ -1,5 +1,8 @@
 name: "godot export"
-on: push
+on:
+  push:
+    paths:
+      - 'build'
 
 env:
   GODOT_VERSION: 4.1.2
