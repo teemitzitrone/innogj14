@@ -22,7 +22,7 @@ jobs:
       - name: Web Build
         run: |
           cd ./game
-          godot -v --export "HTML5" ../build/web/index.html
+          godot -v --export-release "HTML5" ../build/web/index.html
       - name: Zip Artifact
         uses: montudor/action-zip@v0.1.0
         with:
