@@ -24,11 +24,11 @@ jobs:
           cd ./game
           godot -v --export-release "HTML5" ../build/web/index.html
       - name: Zip Artifact
-        uses: montudor/action-zip@v0.1.0
+        uses: montudor/action-zip@v1
         with:
           args: zip -qq -r ${{ env.EXPORT_NAME }}-web.zip ./build/web
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ env.EXPORT_NAME }}-web
           path: ${{ env.EXPORT_NAME }}-web.zip
@@ -36,10 +36,10 @@ jobs:
     environment: itch.io workflow
     name: Publish to itch.io (Web)
     needs: export-web
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-20.04"
     steps:
       - name: Download Artifact (Web)
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: ${{ env.EXPORT_NAME }}-web
       - name: deploy to itch.io (Web)
